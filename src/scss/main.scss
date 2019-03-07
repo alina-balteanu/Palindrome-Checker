@@ -1,0 +1,310 @@
+:root {
+  --bg-main-color: #1f2029;
+  --toned-down-white: #f1f1f1;
+  --highlight-main: #8167a9;
+  --hover-main: #6d578e;
+  --active-main: #614e7d;
+}
+
+$bg-main-color: #1f2029;
+$toned-down-white: #f1f1f1;
+$highlight-main: #8167a9;
+$hover-main: #6d578e;
+$active-main: #614e7d;
+
+body {
+  background-color: $bg-main-color;
+  color: $toned-down-white;
+  font-family: "Montserrat", sans-serif;
+}
+
+main {
+  margin-top: 10%;
+}
+
+/*first section start, wrapper formatting*/
+
+.content-wrapper {
+  padding-right: 15px;
+  padding-left: 15px;
+  box-sizing: border-box;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 750px;
+
+  & h1,
+  & p {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  & h1 {
+    text-transform: uppercase;
+    font-weight: bolder;
+    letter-spacing: 3px;
+    box-sizing: border-box;
+  }
+
+  & p {
+    box-sizing: border-box;
+    letter-spacing: 2px;
+    color: $highlight-main;
+    font-family: "Lato", sans-serif;
+    max-width: 400px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  /* user input area start */
+  .check-wrapper {
+    text-align: center;
+    margin-top: 50px;
+
+    /*btn formatting &overwrite boostrap base*/
+    .btn:focus {
+      box-shadow: 0 0 0 0.2rem rgba(97, 78, 125, 0.5);
+      color: $toned-down-white;
+    }
+
+    .btn-primary {
+      background-color: $highlight-main;
+      border-color: $highlight-main;
+      width: 130px;
+      transition: 0.2s linear;
+      position: relative;
+      overflow: hidden;
+
+      &:hover {
+        background-color: $active-main;
+        border-color: $active-main;
+        transition: 0.2s linear;
+      }
+    }
+
+    .btn-primary:focus,
+    .btn-primary.focus {
+      box-shadow: 0 0 0 0.2rem rgba(97, 78, 125, 0.5);
+    }
+
+    .btn-primary:not(:disabled):not(.disabled):active,
+    .btn-primary:not(:disabled):not(.disabled).active {
+      background-color: $active-main;
+      border-color: $active-main;
+    }
+    .btn-primary:not(:disabled):not(.disabled):active:focus,
+    .btn-primary:not(:disabled):not(.disabled).active:focus {
+      box-shadow: none;
+    }
+
+    /*btn text roll up effect */
+    .btn span {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transition: 0.2s linear;
+    }
+
+    .btn:hover span,
+    .btn:focus span {
+      position: absolute;
+      top: -100px;
+      transition: 0.2s linear;
+    }
+
+    .btn:before {
+      content: "Check!";
+      position: absolute;
+      top: 100px;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transition: 0.2s linear;
+    }
+    .btn:hover:before,
+    .btn:focus:before {
+      content: "Check!";
+      top: 50%;
+      transition: 0.2s linear;
+    }
+  }
+}
+
+/* active class for keypress triggered clicks*/
+.activeBtn {
+  background-color: $active-main;
+  border-color: $active-main;
+  color: $toned-down-white;
+  width: 130px;
+  transition: 0.2s linear;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 0 0.2rem rgba(97, 78, 125, 0.5);
+}
+
+/*input formatting*/
+.form-control,
+.form-control:focus {
+  background-color: $bg-main-color;
+  border-color: rgba(241, 241, 241, 0.3);
+  color: $toned-down-white;
+  letter-spacing: 2px;
+
+  &:focus {
+    border-color: rgba(241, 241, 241, 0.5);
+    border-width: 2px;
+    box-shadow: none;
+  }
+}
+
+/*check results messages */
+#result-message {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  letter-spacing: 3px;
+  min-height: 70px;
+
+  span {
+    word-wrap: break-word;
+  }
+  #user-word {
+    color: $highlight-main;
+  }
+}
+
+/*check mode div,start of second section */
+
+/*toggle switch formatting*/
+
+#toggle-palChecks {
+  text-align: center;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+
+  input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: $highlight-main;
+    transition: 0.4s;
+
+    &:before {
+      position: absolute;
+      content: "1";
+      height: 26px;
+      width: 26px;
+      left: 4px;
+      bottom: 4px;
+      background-color: #fff;
+      -webkit-transition: 0.4s;
+      transition: 0.4s;
+      color: $highlight-main;
+      font-size: 10px;
+      padding-top: 5px;
+      box-sizing: border-box;
+    }
+  }
+  input:checked + .slider {
+    background-color: $toned-down-white;
+  }
+
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196f3;
+  }
+
+  input:checked + .slider:before {
+    background-color: $highlight-main;
+    color: $toned-down-white;
+    content: "2";
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  .slider.round {
+    border-radius: 34px;
+
+    &:before {
+      border-radius: 50%;
+    }
+  }
+}
+
+/*check mode info area*/
+.fa-question-circle {
+  height: 20px;
+  width: 20px;
+  font-size: 20px;
+  margin-left: 10px;
+  cursor: pointer;
+  position: relative;
+  top: 2px;
+  user-select: none;
+
+  &:hover {
+    color: $highlight-main;
+  }
+  &:active {
+    color: #6c568c;
+  }
+}
+
+#check-mode {
+  display: inline-block;
+  letter-spacing: 2px;
+  user-select: none;
+}
+
+#info-div {
+  color: $highlight-main;
+  font-family: "Lato", sans-serif;
+  max-width: 350px;
+  margin-left: auto;
+  margin-right: auto;
+  visibility: hidden;
+
+  span {
+    color: $toned-down-white;
+  }
+}
+
+@media (max-width: 430px) {
+  .content-wrapper {
+    h1 {
+      font-size: 2rem;
+    }
+    p {
+      font-size: 0.9rem;
+    }
+    .check-wrapper .container {
+      padding-right: 0;
+      padding-left: 0;
+    }
+  }
+
+  h3 {
+    font-size: 1.3rem;
+  }
+  #check-btn {
+    font-size: 12px;
+    width: 100px;
+  }
+
+  #result-message {
+    margin-bottom: 0;
+    margin-top: 10px;
+  }
+}
